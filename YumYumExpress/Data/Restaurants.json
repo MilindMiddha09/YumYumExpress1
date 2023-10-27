@@ -1,0 +1,46 @@
+[
+  {
+    "Menu": [
+      {
+        "ProductName": "5",
+        "Price": 5
+      },
+      {
+        "ProductName": "6",
+        "Price": 6
+      },
+      {
+        "ProductName": "7",
+        "Price": 7
+      },
+      {
+        "ProductName": "Burger",
+        "Price": 50
+      },
+      {
+        "ProductName": "Potato",
+        "Price": 15
+      }
+    ],
+    "OpenTiming": "2",
+    "Discount": 2,
+    "Name": "2",
+    "Email": "2",
+    "Password": "2",
+    "Address": "2",
+    "ContactNo": 2,
+    "userType": 0
+  },
+  {
+    "Menu": [
+    ],
+    "OpenTiming": "24x7",
+    "Discount": 20,
+    "Name": "Hello",
+    "Email": "hello",
+    "Password": "hello",
+    "Address": "hello",
+    "ContactNo": 9892381293,
+    "userType": 0
+  }
+]

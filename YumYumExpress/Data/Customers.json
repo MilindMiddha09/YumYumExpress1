@@ -1,0 +1,52 @@
+[
+  {
+    "TotalOrders": 0,
+    "CustomerId": 0,
+    "Name": "Milind Middha",
+    "Email": "milindmiddha10@gmail.com",
+    "Password": "milind123@",
+    "Address": "5-E-6 JNV Colony Bikaner",
+    "ContactNo": 9772797737,
+    "userType": 0
+  },
+  {
+    "TotalOrders": 0,
+    "CustomerId": 0,
+    "Name": "John",
+    "Email": "john@gmail.com",
+    "Password": "john123@",
+    "Address": "Kanpur",
+    "ContactNo": 889323442,
+    "userType": 0
+  },
+  {
+    "TotalOrders": 0,
+    "CustomerId": 0,
+    "Name": "HoneySingh",
+    "Email": "honey@gmail.com",
+    "Password": "honey123@",
+    "Address": "Jaipur",
+    "ContactNo": 87383423,
+    "userType": 0
+  },
+  {
+    "TotalOrders": 0,
+    "CustomerId": 0,
+    "Name": "Harry Potter",
+    "Email": "harry@gmail.com",
+    "Password": "harry123",
+    "Address": "Hogwarts",
+    "ContactNo": 949384934,
+    "userType": 0
+  },
+  {
+    "TotalOrders": 0,
+    "CustomerId": 0,
+    "Name": "King",
+    "Email": "king@gmail.com",
+    "Password": "king123@",
+    "Address": "London",
+    "ContactNo": 43242354,
+    "userType": 0
+  }
+]
