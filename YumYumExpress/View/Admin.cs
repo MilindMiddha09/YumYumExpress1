@@ -18,7 +18,7 @@ namespace YumYumExpress.View
 
         public void ViewAllRestaurants()
         {
-            var RestaurantPath = @"C:\Users\mmiddha\source\repos\Udemy_Part3\YumYumExpress\Restaurants.json";
+            var RestaurantPath = @"C:\Users\mmiddha\source\repos\YumYumExpress\YumYumExpress\Data\Restaurants.json";
 
             var RestaurantData = File.ReadAllText(RestaurantPath);
 
@@ -38,7 +38,7 @@ namespace YumYumExpress.View
 
         public void ViewAllCustomers()
         {
-            var CustomerPath = @"C:\Users\mmiddha\source\repos\Udemy_Part3\YumYumExpress\Customers.json";
+            var CustomerPath = @"C:\Users\mmiddha\source\repos\YumYumExpress\YumYumExpress\Data\Customers.json";
 
             var CustomerData = File.ReadAllText(CustomerPath);
 
@@ -90,14 +90,7 @@ namespace YumYumExpress.View
             restaurant.Discount = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine(restaurant.Menu);
-            //var Prod = new Product("First", 0);
-            //var restaurant = new Restaurant()
-            //{
-            //    Name = name, ContactNo = contactNo,
-            //    Email = email, Address = address,
-            //    OpenTiming = OpenTimings, Discount = discount,
-            //    Menu = new List<Product>()
-            //};
+            
 
             d.StoreRestaurant(restaurant);
         }

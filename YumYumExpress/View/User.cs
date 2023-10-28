@@ -26,8 +26,8 @@ namespace YumYumExpress.View
         public UserType userType { get; set; }
 
         public void ManageLogin()
-        {   
-            stepLogin:
+        {
+        stepLogin:
             Console.WriteLine("Enter Email: ");
             string email = Console.ReadLine();
 
@@ -36,23 +36,23 @@ namespace YumYumExpress.View
 
             //CustomerUI cust = new CustomerUI();
             var entity = a.CheckLogin(email, password);
-            
-            if ( entity is CustomerUI)
+
+            if (entity is CustomerUI)
             {
                 CustomerUI customerUI = (CustomerUI)entity;
                 Console.WriteLine("Logged in as Customer.");
-                //customerUI.Functions();
+                customerUI.Functions(email, password);
             }
 
-            else if(entity is Restaurant)
+            else if (entity is Restaurant)
             {
-                 Restaurant restaurant = (Restaurant)entity;
-                 
-                 Console.WriteLine("Logged in as Restaurant.");
-                 Restaurant.Functions(email,password);
+                Restaurant restaurant = (Restaurant)entity;
+
+                Console.WriteLine("Logged in as Restaurant.");
+                Restaurant.Functions(email, password);
             }
 
-            else if(entity is Admin)
+            else if (entity is Admin)
             {
                 Admin adminUI = (Admin)entity;
                 //
@@ -61,7 +61,10 @@ namespace YumYumExpress.View
             }
 
             else
+            {
+                Console.WriteLine("Enter a valid Email or Password.");
                 goto stepLogin;
+            }
         }
 
     }

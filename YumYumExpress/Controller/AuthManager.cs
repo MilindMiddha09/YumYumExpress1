@@ -32,12 +32,7 @@ namespace YumYumExpress.Controller
             return d.ValidateCustomer(userid, password);
         }
 
-        public static void RegisterRestaurant()
-        {
-            // Restaurant Registration.
-            //DatabaseLayer.StoreRestaurant();/
-
-        }
+        
 
 
         public static void RegisterCustomer(string name, long contactno, string email, string address, string pw)
@@ -47,7 +42,7 @@ namespace YumYumExpress.Controller
             {
                 Name = name, Address = address,
                 ContactNo = contactno, Email = email,
-                Password = pw
+                Password = pw, userType = UserType.Customer
             };
             d.StoreCustomer(customerUI);
         }

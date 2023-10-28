@@ -16,7 +16,7 @@ namespace YumYumExpress.View
             Console.WriteLine("Enter 1 to Login and 2 to SignUp.");
 
         start1:
-            Console.WriteLine("1. Login\n2. Signup");
+            Console.WriteLine("1. Login\n2. Signup\n3. Exit Application.");
             Console.WriteLine("----------------------------------------------------");
             int input = Convert.ToInt32(Console.ReadLine());
 
@@ -30,6 +30,10 @@ namespace YumYumExpress.View
                 case 2:
                     var a = new AuthManager();
                     a.ManageRegister();
+                    break;
+
+                case 3:
+                    Environment.Exit(0);
                     break;
 
                 default:

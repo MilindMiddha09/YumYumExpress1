@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using YumYumExpress.Controller;
 using YumYumExpress.View;
 
 namespace YumYumExpress.Database
@@ -13,9 +15,9 @@ namespace YumYumExpress.Database
     public class DatabaseLayer
     {
         //static List<Restaurant> ls;
-        string CustomerPath = @"C:\Users\mmiddha\source\repos\YumYumExpress\YumYumExpress\Data\Customers.json";
-        string AdminPath = @"C:\Users\mmiddha\source\repos\YumYumExpress\YumYumExpress\Data\Admin.json";
-        string RestaurantPath = @"C:\Users\mmiddha\source\repos\YumYumExpress\YumYumExpress\Data\Restaurants.json";
+        static string CustomerPath = @"C:\Users\mmiddha\source\repos\YumYumExpress\YumYumExpress\Data\Customers.json";
+        static string AdminPath = @"C:\Users\mmiddha\source\repos\YumYumExpress\YumYumExpress\Data\Admin.json";
+        static string RestaurantPath = @"C:\Users\mmiddha\source\repos\YumYumExpress\YumYumExpress\Data\Restaurants.json";
 
         public void StoreCustomer(CustomerUI customer)
         {
@@ -84,6 +86,7 @@ namespace YumYumExpress.Database
                 Address = restaurant.Address,
                 Discount = restaurant.Discount,
                 OpenTiming = restaurant.OpenTiming,
+                userType = UserType.Restaurant
             };
             RestaurantList.Add(newRest);
             string RestaurantData1 = JsonConvert.SerializeObject(RestaurantList, Formatting.Indented);
@@ -152,6 +155,164 @@ namespace YumYumExpress.Database
             }
 
             return null;
+        }
+
+        public static void AddRestMenu(string email, string password, List<Product> menu)
+        {
+            var RestaurantData = File.ReadAllText(RestaurantPath);
+
+            var RestaurantList = JsonConvert.DeserializeObject<List<Restaurant>>(RestaurantData);
+
+            foreach (var rest in RestaurantList)
+            {
+                if (rest.Email == email && rest.Password == password)
+                {
+                    if (rest.Menu != null)
+                    {
+                        rest.Menu.AddRange(menu);
+                    }
+                    else
+                    {
+                        rest.Menu = menu;
+                    }
+                    break;
+                }
+            }
+
+            RestaurantData = JsonConvert.SerializeObject(RestaurantList);
+            File.WriteAllText(RestaurantPath, RestaurantData);
+        }
+
+        public static void ChangeRestDiscount(string email, string password, int discount) {
+            var RestaurantData = File.ReadAllText(RestaurantPath);
+
+            var RestaurantList = JsonConvert.DeserializeObject<List<Restaurant>>(RestaurantData);
+
+            foreach(var rest in RestaurantList)
+            {
+                if(rest.Email == email && rest.Password == password)
+                {
+                    rest.Discount = discount;
+                    break;
+                }
+            }
+
+            RestaurantData = JsonConvert.SerializeObject(RestaurantList);
+            File.WriteAllText(RestaurantPath, RestaurantData);
+
+        }
+
+        public List<Restaurant> Browse() {
+            var RestaurantData = File.ReadAllText(RestaurantPath);
+
+            var RestaurantList = JsonConvert.DeserializeObject<List<Restaurant>>(RestaurantData);
+
+            return RestaurantList;
+        }
+
+        public List<Product> RestaurantMenu(int count)
+        {
+            var RestaurantData = File.ReadAllText(RestaurantPath);
+            var RestaurantList = JsonConvert.DeserializeObject<List<Restaurant>>(RestaurantData);
+
+            var ReqRestaurant = RestaurantList[count-1];
+
+            return ReqRestaurant.Menu;           
+        }
+
+        public Restaurant GetRestaurant(int id) {
+            var RestaurantData = File.ReadAllText(RestaurantPath);
+
+            var RestaurantList = JsonConvert.DeserializeObject<List<Restaurant>>(RestaurantData);
+
+            return RestaurantList[id - 1];
+        }
+        public static Product GetProduct(Restaurant rest,int id)
+        {
+            return rest.Menu[id - 1];
+        }
+
+        public void AddOrderToRestaurant(Restaurant rest,Orders order)
+        {
+            var RestaurantData = File.ReadAllText(RestaurantPath);
+            var RestaurantList = JsonConvert.DeserializeObject<List<Restaurant>>(RestaurantData);
+
+            foreach(var r in RestaurantList)
+            {
+                if(r.Email == rest.Email)
+                {
+                    r.LastOrders.Add(order);
+                    break;
+                }
+            }
+
+            RestaurantData = JsonConvert.SerializeObject(RestaurantList);
+            File.WriteAllText(RestaurantPath, RestaurantData);
+        }
+
+        public static string generateId()
+
+        {
+
+            StringBuilder builder = new StringBuilder();
+
+            Enumerable
+
+               .Range(65, 26)
+
+                .Select(e => ((char)e).ToString())
+
+                .Concat(Enumerable.Range(97, 26).Select(e => ((char)e).ToString()))
+
+                .Concat(Enumerable.Range(0, 10).Select(e => e.ToString()))
+
+                .OrderBy(e => Guid.NewGuid())
+
+                .Take(11)
+
+                .ToList().ForEach(e => builder.Append(e));
+
+            string id = builder.ToString();
+
+
+            return id;
+
+        }
+
+        public void AddOrderToCustomer(string email, Orders order)
+        {
+            
+            var CustomerData = File.ReadAllText(CustomerPath);
+            var CustomerList = JsonConvert.DeserializeObject<List<CustomerUI>> (CustomerData);
+
+            foreach(var cust in CustomerList)
+            {
+                if(cust.Email == email)
+                {
+                    cust.TotalOrders++;
+                    cust.LastOrders.Add(order);
+                    break;
+                }
+            }
+
+            CustomerData = JsonConvert.SerializeObject(CustomerList);
+            File.WriteAllText(CustomerPath, CustomerData);
+        }
+
+        public static int GetOrderCount(string email)
+        {
+            var CustomerData = File.ReadAllText (CustomerPath);
+            var CustomerList = JsonConvert.DeserializeObject<List<CustomerUI>> (CustomerData);
+            
+            foreach(var cust in CustomerList)
+            {
+                if(cust.Email == email)
+                {
+                    return cust.TotalOrders;
+                }
+            }
+
+            return -1;
         }
     }
 }

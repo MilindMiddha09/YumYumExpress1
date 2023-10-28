@@ -7,16 +7,19 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using YumYumExpress.Controller;
+using YumYumExpress.Database;
 
 namespace YumYumExpress.View
 {
     public class Restaurant : User
     {
+        
         public string OpenTiming { get; set; }
         public int Discount { get; set; }
 
         public List<Product> Menu = new List<Product>();
-
+        public List<Orders> LastOrders = new List<Orders>();
+        
         public static void AddMenu(string email, string password)
         {
             var newMenu = new List<Product>();
@@ -38,36 +41,21 @@ namespace YumYumExpress.View
 
                 newMenu.Add(new Product() { ProductName = ProdName, Price = ProdPrice });
             }
-            //Console.WriteLine(menu[0].ProductName);
-            var RestaurantPath = @"C:\Users\mmiddha\source\repos\YumYumExpress\YumYumExpress\Data\Restaurants.json";
-            var RestaurantData = File.ReadAllText(RestaurantPath);
-
-            var RestaurantList = JsonConvert.DeserializeObject<List<Restaurant>>(RestaurantData);
-
-            foreach (var rest in RestaurantList)
-            {
-                if (rest.Email == email && rest.Password == password)
-                {
-                    if (rest.Menu != null)
-                    {
-                        rest.Menu.AddRange(newMenu);
-                    }
-                    else
-                    {
-                        rest.Menu = newMenu;
-                    }
-                    break;
-                }
-            }
-
-            RestaurantData = JsonConvert.SerializeObject(RestaurantList);
-            File.WriteAllText(RestaurantPath, RestaurantData);
+            
+            DatabaseLayer.AddRestMenu(email, password, newMenu);
 
         }
 
-        public static void ChangeDiscount()
+        public static void ChangeDiscount(string email, string password)
         {
             //this.Discount = discount;
+            Console.WriteLine("====================================");
+            Console.WriteLine("Enter New Discount.");
+            int newDiscount = Convert.ToInt32(Console.ReadLine());
+
+            
+            DatabaseLayer.ChangeRestDiscount(email, password, newDiscount);
+            
         }
 
         public static void Functions(string email, string password)
@@ -87,7 +75,7 @@ namespace YumYumExpress.View
                     AddMenu(email,password);
                     break;
                 case 2:
-                    ChangeDiscount();
+                    ChangeDiscount(email, password);
                     break;
 
                 default:
@@ -96,5 +84,46 @@ namespace YumYumExpress.View
             }
         }
 
+        public Orders BrowseMenu(int count)
+        {
+            DatabaseLayer d = new DatabaseLayer();
+            var Menu = d.RestaurantMenu(count);
+
+            foreach(var menu in Menu)
+            {
+                Console.WriteLine("=========================================");
+                Console.WriteLine("Name: "+menu.ProductName+"  Price: "+ menu.Price);
+                
+            }
+
+            
+            List<Product> products = new List<Product>();
+            Restaurant rest = d.GetRestaurant(count);
+            products = Orders.OrderProducts(rest,count);
+
+            int totalAmount = 0;
+
+            foreach(var prod in products) {
+                totalAmount += prod.Price;
+            }
+
+            Orders newOrder = new Orders()
+            {   
+                OrderId = DatabaseLayer.generateId(),
+                
+                TotalAmount = totalAmount,
+                DateOfOrder = DateTime.Now,
+                OrderedProducts = products,
+                OrderTo = rest.Name,
+            };
+            
+            d.AddOrderToRestaurant(rest,newOrder);
+            Console.WriteLine("============================================");
+            Console.WriteLine("Order Successful.");
+            Console.WriteLine("OrderId: " + newOrder.OrderId);
+            Console.WriteLine("Your total amount is "+ newOrder.TotalAmount);
+
+            return newOrder;
+        }
     }
 }

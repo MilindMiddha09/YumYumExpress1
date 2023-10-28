@@ -1,5 +1,7 @@
 [
   {
+    "LastOrders": [
+    ],
     "TotalOrders": 0,
     "CustomerId": 0,
     "Name": "Milind Middha",
@@ -7,9 +9,11 @@
     "Password": "milind123@",
     "Address": "5-E-6 JNV Colony Bikaner",
     "ContactNo": 9772797737,
-    "userType": 0
+    "userType": 1
   },
   {
+    "LastOrders": [
+    ],
     "TotalOrders": 0,
     "CustomerId": 0,
     "Name": "John",
@@ -17,9 +21,11 @@
     "Password": "john123@",
     "Address": "Kanpur",
     "ContactNo": 889323442,
-    "userType": 0
+    "userType": 1
   },
   {
+    "LastOrders": [
+    ],
     "TotalOrders": 0,
     "CustomerId": 0,
     "Name": "HoneySingh",
@@ -27,9 +33,11 @@
     "Password": "honey123@",
     "Address": "Jaipur",
     "ContactNo": 87383423,
-    "userType": 0
+    "userType": 1
   },
   {
+    "LastOrders": [
+    ],
     "TotalOrders": 0,
     "CustomerId": 0,
     "Name": "Harry Potter",
@@ -37,9 +45,11 @@
     "Password": "harry123",
     "Address": "Hogwarts",
     "ContactNo": 949384934,
-    "userType": 0
+    "userType": 1
   },
   {
+    "LastOrders": [
+    ],
     "TotalOrders": 0,
     "CustomerId": 0,
     "Name": "King",
@@ -47,6 +57,126 @@
     "Password": "king123@",
     "Address": "London",
     "ContactNo": 43242354,
-    "userType": 0
+    "userType": 1
+  },
+  {
+    "LastOrders": [
+      {
+        "OrderedProducts": [
+          {
+            "ProductName": "Burger",
+            "Price": 60
+          },
+          {
+            "ProductName": "Chowmein",
+            "Price": 75
+          },
+          {
+            "ProductName": "Chowmein",
+            "Price": 75
+          }
+        ],
+        "OrderId": "5XLTj4xB7Qc",
+        "OrderTo": "2",
+        "TotalAmount": 210,
+        "DateOfOrder": "2023-10-28T00:20:38.8827576+05:30"
+      },
+      {
+        "OrderedProducts": [
+          {
+            "ProductName": "Burger",
+            "Price": 60
+          },
+          {
+            "ProductName": "Chowmein",
+            "Price": 75
+          },
+          {
+            "ProductName": "Hakka Noodles",
+            "Price": 120
+          },
+          {
+            "ProductName": "Hakka Noodles",
+            "Price": 120
+          },
+          {
+            "ProductName": "Hakka Noodles",
+            "Price": 120
+          }
+        ],
+        "OrderId": "FRoun5Lm9zb",
+        "OrderTo": "2",
+        "TotalAmount": 495,
+        "DateOfOrder": "2023-10-28T00:21:26.5810207+05:30"
+      },
+      {
+        "OrderedProducts": [
+          {
+            "ProductName": "Chowmein",
+            "Price": 75
+          },
+          {
+            "ProductName": "Chowmein",
+            "Price": 75
+          },
+          {
+            "ProductName": "Chowmein",
+            "Price": 75
+          }
+        ],
+        "OrderId": "GTmaEXYONr2",
+        "OrderTo": "2",
+        "TotalAmount": 225,
+        "DateOfOrder": "2023-10-28T10:42:19.7093266+05:30"
+      },
+      {
+        "OrderedProducts": [
+          {
+            "ProductName": "Chowmein",
+            "Price": 75
+          },
+          {
+            "ProductName": "Burger",
+            "Price": 60
+          },
+          {
+            "ProductName": "Burger",
+            "Price": 60
+          }
+        ],
+        "OrderId": "bspXvR3Yyq5",
+        "OrderTo": "2",
+        "TotalAmount": 195,
+        "DateOfOrder": "2023-10-28T10:45:44.4844237+05:30"
+      },
+      {
+        "OrderedProducts": [
+          {
+            "ProductName": "Burger",
+            "Price": 60
+          },
+          {
+            "ProductName": "Burger",
+            "Price": 60
+          },
+          {
+            "ProductName": "Burger",
+            "Price": 60
+          }
+        ],
+        "OrderId": "nhU6peaTSQW",
+        "OrderTo": "2",
+        "TotalAmount": 180,
+        "DateOfOrder": "2023-10-28T10:46:59.2562282+05:30"
+      }
+    ],
+    "TotalOrders": 5,
+    "CustomerId": 0,
+    "Name": "Soumya Arora",
+    "Email": "soumya@gmail.com",
+    "Password": "soumya123@",
+    "Address": "Bikaner",
+    "ContactNo": 898434543,
+    "userType": 1
   }
 ]
