@@ -2,135 +2,54 @@
   {
     "Menu": [
       {
-        "ProductName": "Burger",
-        "Price": 60
-      },
-      {
-        "ProductName": "Chowmein",
-        "Price": 75
+        "ProductName": "Lasagna",
+        "Price": 300
       },
       {
         "ProductName": "Hakka Noodles",
-        "Price": 120
+        "Price": 240
+      },
+      {
+        "ProductName": "Paneer Tikka Pizza",
+        "Price": 340
       }
     ],
     "LastOrders": [
       {
         "OrderedProducts": [
           {
-            "ProductName": "Burger",
-            "Price": 60
-          },
-          {
-            "ProductName": "Chowmein",
-            "Price": 75
-          },
-          {
-            "ProductName": "Chowmein",
-            "Price": 75
-          }
-        ],
-        "OrderId": "5XLTj4xB7Qc",
-        "OrderTo": "2",
-        "TotalAmount": 210,
-        "DateOfOrder": "2023-10-28T00:20:38.8827576+05:30"
-      },
-      {
-        "OrderedProducts": [
-          {
-            "ProductName": "Burger",
-            "Price": 60
-          },
-          {
-            "ProductName": "Chowmein",
-            "Price": 75
+            "ProductName": "Lasagna",
+            "Price": 300
           },
           {
             "ProductName": "Hakka Noodles",
-            "Price": 120
+            "Price": 240
           },
           {
             "ProductName": "Hakka Noodles",
-            "Price": 120
-          },
-          {
-            "ProductName": "Hakka Noodles",
-            "Price": 120
+            "Price": 240
           }
         ],
-        "OrderId": "FRoun5Lm9zb",
-        "OrderTo": "2",
-        "TotalAmount": 495,
-        "DateOfOrder": "2023-10-28T00:21:26.5810207+05:30"
+        "OrderId": "TmN2c68lv5h",
+        "OrderTo": "StarDust",
+        "TotalAmount": 780,
+        "DateOfOrder": "2023-10-28T12:57:13.4038127+05:30"
       },
       {
-        "OrderedProducts": [
-          {
-            "ProductName": "Chowmein",
-            "Price": 75
-          },
-          {
-            "ProductName": "Chowmein",
-            "Price": 75
-          },
-          {
-            "ProductName": "Chowmein",
-            "Price": 75
-          }
-        ],
-        "OrderId": "GTmaEXYONr2",
-        "OrderTo": "2",
-        "TotalAmount": 225,
-        "DateOfOrder": "2023-10-28T10:42:19.7093266+05:30"
-      },
-      {
-        "OrderedProducts": [
-          {
-            "ProductName": "Chowmein",
-            "Price": 75
-          },
-          {
-            "ProductName": "Burger",
-            "Price": 60
-          },
-          {
-            "ProductName": "Burger",
-            "Price": 60
-          }
-        ],
-        "OrderId": "bspXvR3Yyq5",
-        "OrderTo": "2",
-        "TotalAmount": 195,
-        "DateOfOrder": "2023-10-28T10:45:44.4844237+05:30"
-      },
-      {
-        "OrderedProducts": [
-          {
-            "ProductName": "Burger",
-            "Price": 60
-          },
-          {
-            "ProductName": "Burger",
-            "Price": 60
-          },
-          {
-            "ProductName": "Burger",
-            "Price": 60
-          }
-        ],
-        "OrderId": "nhU6peaTSQW",
-        "OrderTo": "2",
-        "TotalAmount": 180,
-        "DateOfOrder": "2023-10-28T10:46:59.2562282+05:30"
+        "OrderedProducts": [],
+        "OrderId": "qDuX6M5i8ly",
+        "OrderTo": "StarDust",
+        "TotalAmount": 0,
+        "DateOfOrder": "2023-10-28T13:06:02.6753192+05:30"
       }
     ],
-    "OpenTiming": "2",
-    "Discount": 2,
-    "Name": "2",
-    "Email": "2",
-    "Password": "2",
-    "Address": "2",
-    "ContactNo": 2,
+    "OpenTiming": "24x7",
+    "Discount": 10,
+    "Name": "StarDust",
+    "Email": "star@gmail.com",
+    "Password": "star123@",
+    "Address": "Jaipur",
+    "ContactNo": 7879879384,
     "userType": 2
   }
 ]

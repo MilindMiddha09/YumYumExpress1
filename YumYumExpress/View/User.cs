@@ -37,27 +37,28 @@ namespace YumYumExpress.View
             //CustomerUI cust = new CustomerUI();
             var entity = a.CheckLogin(email, password);
 
-            if (entity is CustomerUI)
+            if (entity is CustomerController)
             {
-                CustomerUI customerUI = (CustomerUI)entity;
+                CustomerController customerUI = (CustomerController)entity;
                 Console.WriteLine("Logged in as Customer.");
-                customerUI.Functions(email, password);
+                var customerUI2 = new CustomerUI();
+                customerUI2.Functions(email, password);
             }
 
-            else if (entity is Restaurant)
+            else if (entity is RestaurantController)
             {
-                Restaurant restaurant = (Restaurant)entity;
+                RestaurantController restaurant = (RestaurantController)entity;
 
                 Console.WriteLine("Logged in as Restaurant.");
                 Restaurant.Functions(email, password);
             }
 
-            else if (entity is Admin)
+            else if (entity is AdminController)
             {
-                Admin adminUI = (Admin)entity;
+                AdminController adminUI = (AdminController)entity;
                 //
                 Console.WriteLine("Logged in as Admin Successful");
-                adminUI.Functions();
+                Admin.Functions(password);
             }
 
             else

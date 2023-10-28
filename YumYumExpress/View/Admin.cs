@@ -5,69 +5,18 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using YumYumExpress.Controller;
 using YumYumExpress.Database;
 
 namespace YumYumExpress.View
 {
     public class Admin
     {
-        DatabaseLayer d = new DatabaseLayer();
-        public string UserId { get; set; }
-        public string Password { get; set; }
+        
 
-
-        public void ViewAllRestaurants()
+        public static void AddRestaurant()
         {
-            var RestaurantPath = @"C:\Users\mmiddha\source\repos\YumYumExpress\YumYumExpress\Data\Restaurants.json";
-
-            var RestaurantData = File.ReadAllText(RestaurantPath);
-
-            var RestaurantList = JsonSerializer.Deserialize<List<Restaurant>>(RestaurantData);
-
-            Console.WriteLine("===========================================");
-            foreach (var rest in RestaurantList)
-            {
-                Console.WriteLine("Name: - " + rest.Name);
-                Console.WriteLine("Contact Number: - " + rest.ContactNo);
-                Console.WriteLine("Address: - " + rest.Address);
-                Console.WriteLine("Opening Timings: - " + rest.OpenTiming);
-                Console.WriteLine("Discount: - " + rest.Discount);
-                Console.WriteLine("===============================================");
-            }
-        }
-
-        public void ViewAllCustomers()
-        {
-            var CustomerPath = @"C:\Users\mmiddha\source\repos\YumYumExpress\YumYumExpress\Data\Customers.json";
-
-            var CustomerData = File.ReadAllText(CustomerPath);
-
-            var CustomerList = JsonSerializer.Deserialize<List<Restaurant>>(CustomerData);
-
-            Console.WriteLine("===========================================");
-            foreach (var cust in CustomerList)
-            {
-                Console.WriteLine("Name: - " + cust.Name);
-                Console.WriteLine("Contact Number: - " + cust.ContactNo);
-                Console.WriteLine("Address: - " + cust.Address);
-                Console.WriteLine("Email: - " + cust.Email);
-                Console.WriteLine("===============================================");
-            }
-        }
-
-        public void RemoveRestaurant()
-        {
-
-        }
-
-        public void RemoveCustomers()
-        {
-
-        }
-
-        public void AddRestaurant()
-        {
-            var restaurant = new Restaurant();
+            var restaurant = new Controller.RestaurantController();
             Console.WriteLine("Enter Restaurant Name: ");
             restaurant.Name = Console.ReadLine();
 
@@ -92,10 +41,10 @@ namespace YumYumExpress.View
             Console.WriteLine(restaurant.Menu);
             
 
-            d.StoreRestaurant(restaurant);
+            RestaurantController.StoreRestaurant(restaurant);
         }
 
-        public void Functions()
+        public static void Functions(string password)
         {
             stepAdminFunctions:
             Console.WriteLine("=====================================");
@@ -112,22 +61,47 @@ namespace YumYumExpress.View
             switch (input)
             {
                 case 1:
-                    ViewAllRestaurants();
+                    AdminController.ViewAllRestaurants();
                     break;
 
                 case 2:
-                    ViewAllCustomers();
+                    AdminController.ViewAllCustomers();
                     break;
 
                 case 3:
                     //Delete restaurant.
+                    Console.WriteLine("Enter the email address of the Restaurant you would like to remove: ");
+                    string delEmail = Console.ReadLine();
+
+                stepDelRest:
+                    Console.WriteLine("Enter your password to confirm");
+                    if (Console.ReadLine() == password)
+                        AdminController.RemoveRestaurant(delEmail) ;
+                    else
+                    {
+                        Console.WriteLine("Incorrect Password");
+                        goto stepDelRest;
+                    }
+
                     break;
 
                 case 4:
                     //Delete Customer.
+                    Console.WriteLine("Enter the email address of the Customer you would like to remove: ");
+                    delEmail = Console.ReadLine();
+
+                stepDelCust:
+                    Console.WriteLine("Enter your password to confirm");
+                    if (Console.ReadLine() == password)
+                        AdminController.RemoveCustomers(delEmail);
+                    else
+                    {
+                        Console.WriteLine("Incorrect Password");
+                        goto stepDelCust;
+                    }
                     break;
                 case 5:
-                    AddRestaurant();
+                    Admin.AddRestaurant();
                     break;
 
                 default:

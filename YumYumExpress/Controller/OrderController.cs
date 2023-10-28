@@ -10,7 +10,7 @@ namespace YumYumExpress.Controller
 {
     public class OrderController
     {
-        public static Product GetOrderProduct(Restaurant rest, int id)
+        public static Product GetOrderProduct(RestaurantController rest, int id)
         {
             return DatabaseLayer.GetProduct(rest, id);
         }

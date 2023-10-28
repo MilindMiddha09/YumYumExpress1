@@ -15,37 +15,37 @@ namespace YumYumExpress.Controller
     public class AuthManager
     {
         DatabaseLayer d = new DatabaseLayer();
-        public bool LoginValidateAdmin(string userid, string password)
-        {
-            return d.ValidateAdmin(userid, password);
+        //public bool LoginValidateAdmin(string userid, string password)
+        //{
+        //    return d.ValidateAdmin(userid, password);
 
-        }
-        public bool LoginValidateRestaurant(string userid, string password)
-        {
-            // Restaurant Validation.
-            return d.ValidateRestaurant(userid, password);
-        }
+        //}
+        //public bool LoginValidateRestaurant(string userid, string password)
+        //{
+        //    // Restaurant Validation.
+        //    return d.ValidateRestaurant(userid, password);
+        //}
 
-        public bool LoginValidateCustomer(string userid, string password)
-        {
-            //Customer Validation
-            return d.ValidateCustomer(userid, password);
-        }
+        //public bool LoginValidateCustomer(string userid, string password)
+        //{
+        //    //Customer Validation
+        //    return d.ValidateCustomer(userid, password);
+        //}
 
         
 
 
-        public static void RegisterCustomer(string name, long contactno, string email, string address, string pw)
-        {
-            DatabaseLayer d = new DatabaseLayer();
-            CustomerUI customerUI = new CustomerUI()
-            {
-                Name = name, Address = address,
-                ContactNo = contactno, Email = email,
-                Password = pw, userType = UserType.Customer
-            };
-            d.StoreCustomer(customerUI);
-        }
+        //public static void RegisterCustomer(string name, long contactno, string email, string address, string pw)
+        //{
+        //    DatabaseLayer d = new DatabaseLayer();
+        //    CustomerUI customerUI = new CustomerUI()
+        //    {
+        //        Name = name, Address = address,
+        //        ContactNo = contactno, Email = email,
+        //        Password = pw, userType = UserType.Customer
+        //    };
+        //    d.StoreCustomer(customerUI);
+        //}
         
         public Object CheckLogin(string email, string password)
         {
@@ -90,7 +90,19 @@ namespace YumYumExpress.Controller
             Console.WriteLine("Address: ");
             string address = Console.ReadLine();
 
-            AuthManager.RegisterCustomer(name, contactNo, email, address, password);
+
+            CustomerController customerController = new CustomerController()
+            {
+                Name = name,
+                ContactNo = contactNo,
+                Email = email,
+                Address = address,
+                Password = password,
+                CustomerId = DatabaseLayer.generateId()
+            };
+
+            CustomerController customer = new CustomerController();
+            customer.StoreCustomer(customerController);
             Console.WriteLine("Registration Successful.");
         }
     }

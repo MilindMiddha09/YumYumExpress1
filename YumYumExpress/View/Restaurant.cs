@@ -11,15 +11,15 @@ using YumYumExpress.Database;
 
 namespace YumYumExpress.View
 {
-    public class Restaurant : User
+    public class Restaurant : UserController
     {
-        
+
         public string OpenTiming { get; set; }
         public int Discount { get; set; }
 
         public List<Product> Menu = new List<Product>();
         public List<Orders> LastOrders = new List<Orders>();
-        
+
         public static void AddMenu(string email, string password)
         {
             var newMenu = new List<Product>();
@@ -98,7 +98,7 @@ namespace YumYumExpress.View
 
             
             List<Product> products = new List<Product>();
-            Restaurant rest = d.GetRestaurant(count);
+            RestaurantController rest = d.GetRestaurant(count);
             products = Orders.OrderProducts(rest,count);
 
             int totalAmount = 0;
@@ -116,8 +116,9 @@ namespace YumYumExpress.View
                 OrderedProducts = products,
                 OrderTo = rest.Name,
             };
-            
-            d.AddOrderToRestaurant(rest,newOrder);
+
+            RestaurantController restcontrol = new RestaurantController();
+            restcontrol.AddOrderToHistory(rest, newOrder);
             Console.WriteLine("============================================");
             Console.WriteLine("Order Successful.");
             Console.WriteLine("OrderId: " + newOrder.OrderId);

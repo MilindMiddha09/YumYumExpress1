@@ -3,21 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YumYumExpress.Controller;
 using YumYumExpress.Database;
 
 namespace YumYumExpress.View
 {
-    public class CustomerUI : User
+    public class CustomerUI : UserController
     {
         DatabaseLayer d = new DatabaseLayer();
-        public int TotalOrders { get; set; }
-        public int CustomerId { get; set; }
-        public List<Orders> LastOrders = new List<Orders>();
-        UserType UserType { get; set; }
-        public int GetTotalOrders(string email)
-        {
-            return DatabaseLayer.GetOrderCount(email);
-        }
+        //public int TotalOrders { get; set; }
+        //public int CustomerId { get; set; }
+        //public List<Orders> LastOrders = new List<Orders>();
+        //UserType UserType { get; set; }
+
 
         public void BrowseRestaurants(string email)
         {
@@ -42,7 +40,7 @@ namespace YumYumExpress.View
             {   
                 
                 var order = restaurant.BrowseMenu(RestInput);
-                d.AddOrderToCustomer(email, order);
+                CustomerController.UpdateHistory(email, order);
             }
 
             catch (Exception ex)
@@ -68,7 +66,7 @@ namespace YumYumExpress.View
             switch(CustInput)
             {
                 case 1:
-                    Console.WriteLine(GetTotalOrders(email)); 
+                    Console.WriteLine(CustomerController.GetTotalOrders(email)); 
                     break;
                 case 2:
 

@@ -17,7 +17,7 @@ namespace YumYumExpress.View
 
         public List<Product> OrderedProducts = new List<Product>();
 
-        public static List<Product> OrderProducts(Restaurant rest, int count)
+        public static List<Product> OrderProducts(RestaurantController rest, int count)
         {
         StepMenu:
             Console.WriteLine("=================================================================");

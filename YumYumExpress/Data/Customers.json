@@ -1,9 +1,8 @@
 [
   {
-    "LastOrders": [
-    ],
+    "LastOrders": [],
     "TotalOrders": 0,
-    "CustomerId": 0,
+    "CustomerId": null,
     "Name": "Milind Middha",
     "Email": "milindmiddha10@gmail.com",
     "Password": "milind123@",
@@ -12,10 +11,9 @@
     "userType": 1
   },
   {
-    "LastOrders": [
-    ],
+    "LastOrders": [],
     "TotalOrders": 0,
-    "CustomerId": 0,
+    "CustomerId": null,
     "Name": "John",
     "Email": "john@gmail.com",
     "Password": "john123@",
@@ -24,10 +22,9 @@
     "userType": 1
   },
   {
-    "LastOrders": [
-    ],
+    "LastOrders": [],
     "TotalOrders": 0,
-    "CustomerId": 0,
+    "CustomerId": null,
     "Name": "HoneySingh",
     "Email": "honey@gmail.com",
     "Password": "honey123@",
@@ -36,27 +33,14 @@
     "userType": 1
   },
   {
-    "LastOrders": [
-    ],
+    "LastOrders": [],
     "TotalOrders": 0,
-    "CustomerId": 0,
+    "CustomerId": null,
     "Name": "Harry Potter",
     "Email": "harry@gmail.com",
     "Password": "harry123",
     "Address": "Hogwarts",
     "ContactNo": 949384934,
-    "userType": 1
-  },
-  {
-    "LastOrders": [
-    ],
-    "TotalOrders": 0,
-    "CustomerId": 0,
-    "Name": "King",
-    "Email": "king@gmail.com",
-    "Password": "king123@",
-    "Address": "London",
-    "ContactNo": 43242354,
     "userType": 1
   },
   {
@@ -168,15 +152,66 @@
         "OrderTo": "2",
         "TotalAmount": 180,
         "DateOfOrder": "2023-10-28T10:46:59.2562282+05:30"
+      },
+      {
+        "OrderedProducts": [
+          {
+            "ProductName": "Burger",
+            "Price": 60
+          },
+          {
+            "ProductName": "Chowmein",
+            "Price": 75
+          },
+          {
+            "ProductName": "Hakka Noodles",
+            "Price": 120
+          }
+        ],
+        "OrderId": "8b3dlELqktu",
+        "OrderTo": "2",
+        "TotalAmount": 255,
+        "DateOfOrder": "2023-10-28T11:30:19.6469186+05:30"
+      },
+      {
+        "OrderedProducts": [
+          {
+            "ProductName": "Chowmein",
+            "Price": 75
+          },
+          {
+            "ProductName": "Chowmein",
+            "Price": 75
+          },
+          {
+            "ProductName": "Hakka Noodles",
+            "Price": 120
+          }
+        ],
+        "OrderId": "On4hHovst2J",
+        "OrderTo": "2",
+        "TotalAmount": 270,
+        "DateOfOrder": "2023-10-28T11:42:11.8722841+05:30"
       }
     ],
-    "TotalOrders": 5,
-    "CustomerId": 0,
+    "TotalOrders": 0,
+    "CustomerId": null,
     "Name": "Soumya Arora",
     "Email": "soumya@gmail.com",
     "Password": "soumya123@",
     "Address": "Bikaner",
     "ContactNo": 898434543,
     "userType": 1
+  },
+  {
+    "LastOrders": [],
+    "TotalOrders": 0,
+    "CustomerId": "Odks9nAUQqJ",
+    "Name": "Jason",
+    "Email": "jaosn@gmail.com",
+    "Password": "jason123",
+    "Address": "London",
+    "ContactNo": 989434234,
+    "userType": 0
   }
 ]

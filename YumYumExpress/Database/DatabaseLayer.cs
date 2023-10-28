@@ -19,11 +19,11 @@ namespace YumYumExpress.Database
         static string AdminPath = @"C:\Users\mmiddha\source\repos\YumYumExpress\YumYumExpress\Data\Admin.json";
         static string RestaurantPath = @"C:\Users\mmiddha\source\repos\YumYumExpress\YumYumExpress\Data\Restaurants.json";
 
-        public void StoreCustomer(CustomerUI customer)
+        public void StoreCustomer(CustomerController customer)
         {
-            
+
             var CustomerData = File.ReadAllText(CustomerPath);
-            var CustomerList = JsonConvert.DeserializeObject<List<CustomerUI>>(CustomerData);
+            var CustomerList = JsonConvert.DeserializeObject<List<CustomerController>>(CustomerData);
 
             CustomerList.Add(customer);
 
@@ -32,51 +32,51 @@ namespace YumYumExpress.Database
         }
 
 
-        public bool ValidateAdmin(string userid, string password)
-        {
-            var adminData = File.ReadAllText(AdminPath);
-            var adminJson = JsonConvert.DeserializeObject<Admin>(adminData);
+        //public bool ValidateAdmin(string userid, string password)
+        //{
+        //    var adminData = File.ReadAllText(AdminPath);
+        //    var adminJson = JsonConvert.DeserializeObject<AdminController>(adminData);
 
-            if (userid == adminJson.UserId && password == adminJson.Password)
-            {
-                Console.WriteLine("Login Successful");
-                return true;
-            }
+        //    if (userid == adminJson.UserId && password == adminJson.Password)
+        //    {
+        //        Console.WriteLine("Login Successful");
+        //        return true;
+        //    }
 
-            else
-            {
-                Console.WriteLine("Email or password Wrong.");
-                return false;
-            }
+        //    else
+        //    {
+        //        Console.WriteLine("Email or password Wrong.");
+        //        return false;
+        //    }
 
-        }
+        //}
 
-        public bool ValidateCustomer(string userid, string password)
-        {
-            var CustomerData = File.ReadAllText(CustomerPath);
-            var CustomerJson = JsonConvert.DeserializeObject<List<CustomerUI>>(CustomerData);
+        //public bool ValidateCustomer(string userid, string password)
+        //{
+        //    var CustomerData = File.ReadAllText(CustomerPath);
+        //    var CustomerJson = JsonConvert.DeserializeObject<List<CustomerController>>(CustomerData);
 
-            foreach (var cust in CustomerJson)
-            {
-                if (cust.Email == userid && cust.Password == password)
-                {
-                    Console.WriteLine("Login Successful");
-                    return true;
-                }
+        //    foreach (var cust in CustomerJson)
+        //    {
+        //        if (cust.Email == userid && cust.Password == password)
+        //        {
+        //            Console.WriteLine("Login Successful");
+        //            return true;
+        //        }
 
-            }
-            Console.WriteLine("Invalid Email or Password.");
-            return false;
-        }
+        //    }
+        //    Console.WriteLine("Invalid Email or Password.");
+        //    return false;
+        //}
 
-        public void StoreRestaurant(Restaurant restaurant)
+        public static void StoreRestaurant(RestaurantController restaurant)
         {
 
             var RestaurantData = File.ReadAllText(RestaurantPath);
 
-            var RestaurantList = JsonConvert.DeserializeObject<List<Restaurant>>(RestaurantData);
+            var RestaurantList = JsonConvert.DeserializeObject<List<RestaurantController>>(RestaurantData);
 
-            var newRest = new Restaurant()
+            var newRest = new RestaurantController()
             {
                 Name = restaurant.Name,
                 Email = restaurant.Email,
@@ -93,30 +93,30 @@ namespace YumYumExpress.Database
             File.WriteAllText(RestaurantPath, RestaurantData1);
         }
 
-        public bool ValidateRestaurant(string userid, string password)
-        {
-            var RestaurantData = File.ReadAllText(RestaurantPath);
+        //public bool ValidateRestaurant(string userid, string password)      
+        //{
+        //    var RestaurantData = File.ReadAllText(RestaurantPath);
 
-            var RestaurantList = JsonConvert.DeserializeObject<List<Restaurant>>(RestaurantData);
+        //    var RestaurantList = JsonConvert.DeserializeObject<List<RestaurantController>>(RestaurantData);
 
-            foreach (var rest in RestaurantList)
-            {
-                if (rest.Email == userid && rest.Password == password)
-                {
-                    Console.WriteLine("Login Successful.");
-                    Console.WriteLine("-------------------------------------------");
-                    return true;
-                }
-            }
-            return false;
+        //    foreach (var rest in RestaurantList)
+        //    {
+        //        if (rest.Email == userid && rest.Password == password)
+        //        {
+        //            Console.WriteLine("Login Successful.");
+        //            Console.WriteLine("-------------------------------------------");
+        //            return true;
+        //        }
+        //    }
+        //    return false;
 
-        }
+        //}
 
         public Object CheckCustomer(string email, string password)
         {
             var CustomerData = File.ReadAllText(CustomerPath);
 
-            var CustomerList = JsonConvert.DeserializeObject<List<CustomerUI>>(CustomerData);
+            var CustomerList = JsonConvert.DeserializeObject<List<CustomerController>>(CustomerData);
 
             foreach(var cust in CustomerList)
             {
@@ -131,7 +131,7 @@ namespace YumYumExpress.Database
         {
             var RestaurantData = File.ReadAllText(RestaurantPath);
 
-            var RestaurantList = JsonConvert.DeserializeObject<List<Restaurant>>(RestaurantData);
+            var RestaurantList = JsonConvert.DeserializeObject<List<RestaurantController>>(RestaurantData);
 
             foreach (var rest in RestaurantList)
             {
@@ -146,7 +146,7 @@ namespace YumYumExpress.Database
         {
             var AdminData = File.ReadAllText(AdminPath);
 
-            List<Admin> AdminList = JsonConvert.DeserializeObject<List<Admin>>(AdminData);
+            var AdminList = JsonConvert.DeserializeObject<List<AdminController>>(AdminData);
 
             foreach (var admin in AdminList)
             {
@@ -161,7 +161,7 @@ namespace YumYumExpress.Database
         {
             var RestaurantData = File.ReadAllText(RestaurantPath);
 
-            var RestaurantList = JsonConvert.DeserializeObject<List<Restaurant>>(RestaurantData);
+            var RestaurantList = JsonConvert.DeserializeObject<List<RestaurantController>>(RestaurantData);
 
             foreach (var rest in RestaurantList)
             {
@@ -186,7 +186,7 @@ namespace YumYumExpress.Database
         public static void ChangeRestDiscount(string email, string password, int discount) {
             var RestaurantData = File.ReadAllText(RestaurantPath);
 
-            var RestaurantList = JsonConvert.DeserializeObject<List<Restaurant>>(RestaurantData);
+            var RestaurantList = JsonConvert.DeserializeObject<List<RestaurantController>>(RestaurantData);
 
             foreach(var rest in RestaurantList)
             {
@@ -202,10 +202,10 @@ namespace YumYumExpress.Database
 
         }
 
-        public List<Restaurant> Browse() {
+        public List<RestaurantController> Browse() {
             var RestaurantData = File.ReadAllText(RestaurantPath);
 
-            var RestaurantList = JsonConvert.DeserializeObject<List<Restaurant>>(RestaurantData);
+            var RestaurantList = JsonConvert.DeserializeObject<List<RestaurantController>>(RestaurantData);
 
             return RestaurantList;
         }
@@ -213,29 +213,29 @@ namespace YumYumExpress.Database
         public List<Product> RestaurantMenu(int count)
         {
             var RestaurantData = File.ReadAllText(RestaurantPath);
-            var RestaurantList = JsonConvert.DeserializeObject<List<Restaurant>>(RestaurantData);
+            var RestaurantList = JsonConvert.DeserializeObject<List<RestaurantController>>(RestaurantData);
 
             var ReqRestaurant = RestaurantList[count-1];
 
             return ReqRestaurant.Menu;           
         }
 
-        public Restaurant GetRestaurant(int id) {
+        public RestaurantController GetRestaurant(int id) {
             var RestaurantData = File.ReadAllText(RestaurantPath);
 
-            var RestaurantList = JsonConvert.DeserializeObject<List<Restaurant>>(RestaurantData);
+            var RestaurantList = JsonConvert.DeserializeObject<List<RestaurantController>>(RestaurantData);
 
             return RestaurantList[id - 1];
         }
-        public static Product GetProduct(Restaurant rest,int id)
+        public static Product GetProduct(RestaurantController rest,int id)
         {
             return rest.Menu[id - 1];
         }
 
-        public void AddOrderToRestaurant(Restaurant rest,Orders order)
+        public void AddOrderToRestaurant(RestaurantController rest,Orders order)
         {
             var RestaurantData = File.ReadAllText(RestaurantPath);
-            var RestaurantList = JsonConvert.DeserializeObject<List<Restaurant>>(RestaurantData);
+            var RestaurantList = JsonConvert.DeserializeObject<List<RestaurantController>>(RestaurantData);
 
             foreach(var r in RestaurantList)
             {
@@ -283,7 +283,7 @@ namespace YumYumExpress.Database
         {
             
             var CustomerData = File.ReadAllText(CustomerPath);
-            var CustomerList = JsonConvert.DeserializeObject<List<CustomerUI>> (CustomerData);
+            var CustomerList = JsonConvert.DeserializeObject<List<CustomerController>> (CustomerData);
 
             foreach(var cust in CustomerList)
             {
@@ -302,7 +302,7 @@ namespace YumYumExpress.Database
         public static int GetOrderCount(string email)
         {
             var CustomerData = File.ReadAllText (CustomerPath);
-            var CustomerList = JsonConvert.DeserializeObject<List<CustomerUI>> (CustomerData);
+            var CustomerList = JsonConvert.DeserializeObject<List<CustomerController>> (CustomerData);
             
             foreach(var cust in CustomerList)
             {
@@ -313,6 +313,79 @@ namespace YumYumExpress.Database
             }
 
             return -1;
+        }
+
+        public static void ViewAllRestaurants()
+        {
+            var RestaurantData = File.ReadAllText(RestaurantPath);
+
+            var RestaurantList = JsonConvert.DeserializeObject<List<RestaurantController>>(RestaurantData);
+
+            Console.WriteLine("===========================================");
+            foreach (var rest in RestaurantList)
+            {
+                Console.WriteLine("Name: - " + rest.Name);
+                Console.WriteLine("Contact Number: - " + rest.ContactNo);
+                Console.WriteLine("Address: - " + rest.Address);
+                Console.WriteLine("Opening Timings: - " + rest.OpenTiming);
+                Console.WriteLine("Discount: - " + rest.Discount);
+                Console.WriteLine("===============================================");
+            }
+        }
+        public static void ViewAllCustomers()
+        {
+            var CustomerData = File.ReadAllText(CustomerPath);
+
+            var CustomerList = JsonConvert.DeserializeObject<List<CustomerController>>(CustomerData);
+
+            Console.WriteLine("===========================================");
+            foreach (var cust in CustomerList)
+            {
+                Console.WriteLine("Name: - " + cust.Name);
+                Console.WriteLine("Contact Number: - " + cust.ContactNo);
+                Console.WriteLine("Address: - " + cust.Address);
+                Console.WriteLine("Email: - " + cust.Email);
+                Console.WriteLine("===============================================");
+            }
+        }
+
+        public static void RemoveRestaurant(string email)
+        {
+            var RestaurantData = File.ReadAllText(RestaurantPath);
+            var RestaurantList = JsonConvert.DeserializeObject<List<RestaurantController>>(RestaurantData);
+
+            foreach (var rest in RestaurantList)
+            {
+                if (rest.Email == email)
+                {
+                    RestaurantList.Remove(rest);
+                    RestaurantData = JsonConvert.SerializeObject(RestaurantList, Formatting.Indented);
+                    File.WriteAllText(RestaurantPath, RestaurantData);
+                    return;
+                }
+            }
+
+            Console.WriteLine("No such Restaurant Found.");
+
+        }
+
+        public static void RemoveCustomers(string email)
+        {
+            var CustomerData = File.ReadAllText(CustomerPath);
+            var CustomerList = JsonConvert.DeserializeObject<List<CustomerController>>(CustomerData);
+
+            foreach (var rest in CustomerList)
+            {
+                if (rest.Email == email)
+                {
+                    CustomerList.Remove(rest);
+                    CustomerData = JsonConvert.SerializeObject(CustomerList, Formatting.Indented);
+                    File.WriteAllText(CustomerPath, CustomerData);
+                    return;
+                }
+            }
+
+            Console.WriteLine("No such Restaurant Found.");
         }
     }
 }
